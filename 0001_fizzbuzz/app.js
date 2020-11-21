@@ -23,11 +23,9 @@ function calculation() {
 
 function dom() {
     const target = document.getElementById("target");
-
     if (target.hasChildNodes) {
         target.innerHTML = '';
     }
-
     let ptag = document.createElement("p");
     ptag.innerHTML = calculation();
     target.appendChild(ptag);
