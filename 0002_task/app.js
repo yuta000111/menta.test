@@ -2,14 +2,12 @@ const btn = document.getElementById('btn');
 const tasklist = [];
 
 function gettask() {
-    let newtask = {};
-    const taskid = tasklist.length + 1;
-    const taskname = document.getElementById('new-task').value;
-    newtask.id = taskid;
-    newtask.name = taskname;
-    newtask.status = '作業中';
+    let newtask = {
+        id: tasklist.length + 1,
+        name: document.getElementById('new-task').value,
+        status: '作業中',
+    };
     tasklist.push(newtask);
-    newtask = {};
 }
 
 function add() {
