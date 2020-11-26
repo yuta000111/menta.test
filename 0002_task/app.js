@@ -2,7 +2,7 @@ const btn = document.getElementById('btn');
 const tasklist = [];
 
 function gettask() {
-    let newtask = {
+    const newtask = {
         id: tasklist.length + 1,
         name: document.getElementById('new-task').value,
         status: '作業中',
