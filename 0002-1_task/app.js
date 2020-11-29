@@ -2,7 +2,7 @@ const btn = document.getElementById('btn');
 const target = document.getElementById('task')
 const todolist = []
 
-btn.addEventListener('click', function(e) {
+btn.addEventListener('click', () => {
     let newtask = document.getElementById('new-task');
     const task = { name: newtask.value, status: "作業中" };
     todolist.push(task);
@@ -10,9 +10,9 @@ btn.addEventListener('click', function(e) {
     showtodo();
 })
 
-function showtodo() {
+const showtodo = () => {
     target.textContent = '';
-    todolist.forEach(function(todo, index) {
+    todolist.forEach((todo, index) => {
         const tr = document.createElement('tr');
         target.appendChild(tr);
         const todolistid = document.createElement('td');
@@ -28,18 +28,18 @@ function showtodo() {
         tr.appendChild(todoliststatus);
         tr.appendChild(todolistdelete);
 
-        todoliststatus.appendChild(statusbtn());
+        todoliststatus.appendChild(workbtn());
         todolistdelete.appendChild(deletebtn(tr));
     })
 };
 
-function statusbtn() {
+const workbtn = () => {
     const statusbutton = document.createElement('button');
     statusbutton.textContent = '作業中';
     return statusbutton
 };
 
-function deletebtn(tr) {
+const deletebtn = tr => {
     const deletebutton = document.createElement('button');
     deletebutton.textContent = '削除'
     const number = tr.rowIndex - 1;
