@@ -1,34 +1,5 @@
-const btn = document.getElementById('btn'); <<
-<< << < HEAD
-const tasklist = [];
-
-function gettask() {
-    const newtask = {
-        id: tasklist.length + 1,
-        name: document.getElementById('new-task').value,
-        status: '作業中',
-    };
-    tasklist.push(newtask);
-}
-
-function add() {
-    gettask();
-    const target = document.getElementById('task');
-    const tr = document.createElement('tr');
-    const tdid = document.createElement('td');
-    tdid.innerHTML = tasklist[tasklist.length - 1].id;
-    tr.appendChild(tdid);
-    const tdname = document.createElement('td');
-    tdname.innerHTML = tasklist[tasklist.length - 1].name;
-    tr.appendChild(tdname);
-    const tdstatus = document.createElement('td');
-    tdstatus.innerHTML = tasklist[tasklist.length - 1].status;
-    tr.appendChild(tdstatus);
-    target.appendChild(tr);
-}
-btn.addEventListener('click', add) ===
-    === =
-    const target = document.getElementById('task')
+const btn = document.getElementById('btn');
+const target = document.getElementById('task')
 const todolist = []
 
 btn.addEventListener('click', () => {
@@ -69,13 +40,39 @@ const workbtn = () => {
 };
 
 const deletebtn = tr => {
-        const deletebutton = document.createElement('button');
-        deletebutton.textContent = '削除'
-        const number = tr.rowIndex - 1;
-        deletebutton.addEventListener('click', function() {
-            todolist.splice(number, 1);
-            showtodo();
-        })
-        return deletebutton;
-    } >>>
-    >>> > develop
+    const deletebutton = document.createElement('button');
+    deletebutton.textContent = '削除'
+    const number = tr.rowIndex - 1;
+    deletebutton.addEventListener('click', function() {
+        todolist.splice(number, 1);
+        showtodo();
+    })
+    return deletebutton;
+}
+const tasklist = [];
+
+function gettask() {
+    const newtask = {
+        id: tasklist.length + 1,
+        name: document.getElementById('new-task').value,
+        status: '作業中',
+    };
+    tasklist.push(newtask);
+}
+
+function add() {
+    gettask();
+    const target = document.getElementById('task');
+    const tr = document.createElement('tr');
+    const tdid = document.createElement('td');
+    tdid.innerHTML = tasklist[tasklist.length - 1].id;
+    tr.appendChild(tdid);
+    const tdname = document.createElement('td');
+    tdname.innerHTML = tasklist[tasklist.length - 1].name;
+    tr.appendChild(tdname);
+    const tdstatus = document.createElement('td');
+    tdstatus.innerHTML = tasklist[tasklist.length - 1].status;
+    tr.appendChild(tdstatus);
+    target.appendChild(tr);
+}
+btn.addEventListener('click', add)
