@@ -29,7 +29,9 @@ btn.addEventListener('click', () => {
     todolist.push(task);
     newtask.value = '';
     if (donestatus.checked) {
-        return
+        todolist.filter(todo => {
+            todolist[todolist.length - 1].id = todolist.length
+        })
     } else if (workstatus.checked) {
         const worktask = todolist.filter(todo => {
             todolist[todolist.length - 1].id = todolist.length
