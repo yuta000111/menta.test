@@ -20,70 +20,51 @@ donestatus.addEventListener('input', () => {
 })
 
 allstatus.addEventListener('input', () => {
-    showtodo()
+    showtodo(todolist)
 })
 
 btn.addEventListener('click', () => {
     const newtask = document.getElementById('new-task');
     const task = { id: "", name: newtask.value, status: '作業中' };
-    todolist.push(task);
     newtask.value = '';
-    if (donestatus.checked) {
-        todolist.filter(todo => {
-            todolist[todolist.length - 1].id = todolist.length
-        })
-    } else if (workstatus.checked) {
-        const worktask = todolist.filter(todo => {
+    todolist.push(task);
+    if (workstatus.checked) {
+        const worktask = todolist.forEach(todo => {
             todolist[todolist.length - 1].id = todolist.length
             return (todo.status == '作業中')
         })
         showtodo(worktask)
-    } else { showtodo(); }
-
+    } else if (donestatus.checked) {
+        todolist.forEach((todo, index) => {
+            todo.id = index + 1
+        })
+        return
+    } else {
+        todolist.forEach((todo, index) => {
+            todo.id = index + 1
+            showtodo(todolist)
+        })
+    }
 })
 
 const showtodo = array => {
     target.innerHTML = '';
-    if (array) {
-        array.forEach((todo, index) => {
-            const tr = document.createElement('tr');
-            target.appendChild(tr);
-            const todolistid = document.createElement('td');
-            const todolistname = document.createElement('td');
-            const todoliststatus = document.createElement('td');
-            const todolistdelete = document.createElement('td');
-            const number = todo.id - 1
-            todolistid.textContent = todo.id;
-            todolistname.textContent = todo.name;
-            tr.appendChild(todolistid);
-            tr.appendChild(todolistname);
-            tr.appendChild(todoliststatus);
-            tr.appendChild(todolistdelete);
-            todoliststatus.appendChild(workbtn(todo, number));
-            todolistdelete.appendChild(deletebtn(index));
-
-        })
-    } else {
-        target.textContent = '';
-        todolist.forEach((todo, index) => {
-            const tr = document.createElement('tr');
-            target.appendChild(tr);
-            const todolistid = document.createElement('td');
-            const todolistname = document.createElement('td');
-            const todoliststatus = document.createElement('td');
-            const todolistdelete = document.createElement('td');
-            todo.id = index + 1;
-            todolistid.textContent = index + 1;
-            todolistname.textContent = todo.name;
-            tr.appendChild(todolistid);
-            tr.appendChild(todolistname);
-            tr.appendChild(todoliststatus);
-            tr.appendChild(todolistdelete);
-
-            todoliststatus.appendChild(workbtn(todo, index));
-            todolistdelete.appendChild(deletebtn(index));
-        })
-    }
+    array.forEach((todo, index) => {
+        const tr = document.createElement('tr');
+        target.appendChild(tr);
+        const todolistid = document.createElement('td');
+        const todolistname = document.createElement('td');
+        const todoliststatus = document.createElement('td');
+        const todolistdelete = document.createElement('td');
+        todolistid.textContent = todo.id;
+        todolistname.textContent = todo.name;
+        tr.appendChild(todolistid);
+        tr.appendChild(todolistname);
+        tr.appendChild(todoliststatus);
+        tr.appendChild(todolistdelete);
+        todoliststatus.appendChild(workbtn(todo, index));
+        todolistdelete.appendChild(deletebtn(index));
+    })
 };
 
 const workbtn = (todo, number) => {
@@ -102,11 +83,15 @@ const workbtn = (todo, number) => {
 };
 
 const deletebtn = index => {
+    const number = index
     const deletebutton = document.createElement('button');
     deletebutton.textContent = '削除'
     deletebutton.addEventListener('click', () => {
-        todolist.splice(index, 1);
-        showtodo();
+        todolist.splice(number, 1);
+        todolist.forEach((todo, index) => {
+            todo.id = index + 1
+        })
+        showtodo(todolist);
     })
     return deletebutton;
 }
