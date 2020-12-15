@@ -38,7 +38,7 @@ btn.addEventListener('click', () => {
         todolist.forEach((todo, index) => {
             todo.id = index + 1
         })
-        return
+
     } else {
         todolist.forEach((todo, index) => {
             todo.id = index + 1
