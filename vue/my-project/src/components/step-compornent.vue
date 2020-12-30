@@ -6,7 +6,7 @@
               <div class="stepbox__head--step">
                 <span class="stepbox__step"><slot name="stepnumber"></slot></span>
               </div>
-                <h2 class="stepbox__title">お客様の情報を入力してください</h2>
+                <h2 class="stepbox__title"><slot name="title"></slot></h2>
           </div>
           <div class="stepbox__textarea">
               <div class="stepbox__inner--textarea">
@@ -53,28 +53,8 @@ export default {
 .button{
     width:200px;    
     margin:20px auto;
-        .next{
-            font-size: 20px;
-            position: relative;
-            border-radius: 5px;
-            line-height: 40px;
-            width: 100%;
-            border:none;
-            background-color: #00d2b4;
-            color: white;
-            padding-right: 15px;
-            &::after{
-                content: '';
-                width: 10px;
-                height: 10px;
-                border-top: solid 2px white;
-                border-right: solid 2px white;
-                transform: rotate(45deg);
-                position: absolute;
-                top: 35%;
-            }
 
-}
+
 }
 
 .stepbox{

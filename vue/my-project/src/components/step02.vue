@@ -1,6 +1,6 @@
 <template>
   <StepCompornent>
-
+      <template #title>これがステップ2</template>
   </StepCompornent>
 </template>
 

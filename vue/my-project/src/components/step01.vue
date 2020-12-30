@@ -1,5 +1,6 @@
 <template>
   <StepCompornent>
+      <template #title>お客様の情報をご入力してください。</template>
       <template #stepnumber>STEP1</template>
       <template #question01>{{question1}}</template>
       <template #answer1>
@@ -107,7 +108,7 @@
             </div>
       </template>
       <template #button>
-          <p>{{stepNum}}</p>
+          <button class="next" onclick="location.href='./step02'">次に進む</button>
       </template>
   </StepCompornent>
 </template>
@@ -116,7 +117,9 @@
 import StepCompornent from './step-compornent'
 
 export default {
-    props:['stepNum'],
+    props:{
+        startnumber:Number
+    },
     components:{
         StepCompornent
     },
@@ -134,6 +137,28 @@ export default {
 </script>
 
 <style lang="scss">
+.next{
+    text-decoration: none;
+    font-size: 20px;
+position: relative;
+border-radius: 5px;
+line-height: 40px;
+width: 100%;
+border:none;
+background-color: #00d2b4;
+color: white;
+padding-right: 15px;
+    &::after{
+        content: '';
+        width: 10px;
+        height: 10px;
+        border-top: solid 2px white;
+        border-right: solid 2px white;
+        transform: rotate(45deg);
+        position: absolute;
+        top: 35%;
+            }
+            }
     .answer02{
         &__year{
             padding-right: 1em;

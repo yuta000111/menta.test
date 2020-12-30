@@ -1,6 +1,6 @@
 <template>
   <Header></Header>
-  <step01></step01>
+  <step01 :startnumber="currentnum"></step01>
 </template>
 
 <script>
@@ -11,6 +11,11 @@ export default {
   components:{
     Header,
     step01
+  },
+  data:function(){
+    return{
+      currentnum:1
+    }
   }
 }
 </script>
