@@ -140,14 +140,14 @@ export default {
 .next{
     text-decoration: none;
     font-size: 20px;
-position: relative;
-border-radius: 5px;
-line-height: 40px;
-width: 100%;
-border:none;
-background-color: #00d2b4;
-color: white;
-padding-right: 15px;
+    position: relative;
+    border-radius: 5px;
+    line-height: 40px;
+    width: 100%;
+    border:none;
+    background-color: #00d2b4;
+    color: white;
+    padding-right: 15px;
     &::after{
         content: '';
         width: 10px;

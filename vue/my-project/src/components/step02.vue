@@ -1,6 +1,6 @@
 <template>
   <StepCompornent>
-      <template #title>これがステップ2</template>
+      <template #title>ボタンをクリックすればこれが表示されるはず。</template>
   </StepCompornent>
 </template>
 
