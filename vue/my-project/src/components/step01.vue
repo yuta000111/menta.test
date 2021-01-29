@@ -107,10 +107,8 @@
       <label for="year">日</label>
             </div>
       </template>
-      <template #button>
-          <button class="next" onclick="location.href='./step02'">次に進む</button>
-      </template>
   </StepCompornent>
+  <button type="button" @click="this.$router.push({path:'/step02'})">NEXT</button>
 </template>
 
 <script>
@@ -132,6 +130,9 @@ export default {
             mounth:'',
             day:''
         }
+    },
+    method:{
+
     }
 }
 </script>

@@ -1,22 +1,22 @@
 <template>
-  <Header></Header>
-  <step01 :startnumber="currentnum"></step01>
+    <Header></Header>
+    <Step01></Step01>
 </template>
 
 <script>
 import Header from './components/sample'
-import step01 from './components/step01'
 import 'normalize.css'
+import Step01 from './components/step01'
 export default {
   components:{
     Header,
-    step01
+    Step01
   },
   data:function(){
     return{
       currentnum:1
     }
-  }
+  },
 }
 </script>
 
