@@ -1,5 +1,6 @@
 import step01 from '@/components/step01'
 import step02 from '@/components/step02'
+import step03 from '@/components/step03'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -13,6 +14,11 @@ const router = createRouter({
             path: '/step02',
             name: 'step02',
             component: step02
+        },
+        {
+            path: '/step03',
+            name: 'step03',
+            component: step03
         }
     ]
 })

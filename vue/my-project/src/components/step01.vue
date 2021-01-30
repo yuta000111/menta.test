@@ -2,15 +2,15 @@
   <StepCompornent>
       <template #title>お客様の情報をご入力してください。</template>
       <template #stepnumber>STEP1</template>
-      <template #question01>{{question1}}</template>
-      <template #answer1>
+      <template #question01>-性別-</template>
+      <template #answer01>
         <input v-model="Gender" value="男性" type="radio" name="gender" id="gender01"><label for="gender01">男性</label>
         <input v-model="Gender" value="女性" type="radio" name="gender" id="gender02"><label for="gender02">女性</label>  
       </template>
       <template #question02>
-          {{question2}}
+          -生年月日-
       </template> 
-      <template #answer2>
+      <template #answer02>
           <div class="answer02">
         <select class="answer02__year" v-model="birth" name="year" id="year">
                             <option value="1970">1970/昭和45</option>
@@ -108,7 +108,7 @@
             </div>
       </template>
   </StepCompornent>
-  <button type="button" @click="this.$router.push({path:'/step02'})">NEXT</button>
+  <button class="button" type="button" @click="this.$router.push({path:'/step02'}); step">次に進む</button>
 </template>
 
 <script>
@@ -116,23 +116,22 @@ import StepCompornent from './step-compornent'
 
 export default {
     props:{
-        startnumber:Number
+        startnum:Number
+    },
+    emits:{
+        updateStep:null
     },
     components:{
         StepCompornent
     },
     data:function(){
         return{
-            question1:'-性別-',
-            question2:'-生年月日-',
             Gender:'',
             birth:'',
             mounth:'',
-            day:''
+            day:'',
+            answer01:[]
         }
-    },
-    method:{
-
     }
 }
 </script>
@@ -182,4 +181,12 @@ export default {
         }
         
     }
+.button{
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    background-color: #00947e;
+    padding: 0.6em 1em;
+}
 </style>

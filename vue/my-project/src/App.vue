@@ -1,7 +1,6 @@
 <template>
     <Header></Header>
     <router-view></router-view>
-    
 </template>
 
 <script>
@@ -13,10 +12,11 @@ export default {
   },
   data:function(){
     return{
-      currentnum:1
+      currentnum:1,
+      answers:[]
     }
-  },
-}
+  }
+  }
 </script>
 
 <style lang="scss">
@@ -28,5 +28,4 @@ export default {
   color: #2c3e50;
 
 }
-
 </style>
