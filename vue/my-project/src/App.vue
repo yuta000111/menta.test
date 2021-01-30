@@ -1,16 +1,15 @@
 <template>
     <Header></Header>
-    <Step01></Step01>
+    <router-view></router-view>
+    
 </template>
 
 <script>
 import Header from './components/sample'
 import 'normalize.css'
-import Step01 from './components/step01'
 export default {
   components:{
-    Header,
-    Step01
+    Header
   },
   data:function(){
     return{
