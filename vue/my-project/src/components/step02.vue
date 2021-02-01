@@ -7,15 +7,15 @@
           <label for="answer01">はい<input v-model="lifeAssurance" id="answer01" type="radio" name="life-assurance" value="true"></label>
           <label for="answer02">いいえ<input v-model="lifeAssurance" id="answer02" type="radio" name="life-assurance" value="false"></label>
       </template>
-      <template #question02>現在入院中ですか。または、最近3ヶ月以内に医師の診断・検査の結果、入院・手術を進められたことはありますか？</template>
-      <template #answer02>
+      <template #question02 v-if="lifeAssurance">現在入院中ですか。または、最近3ヶ月以内に医師の診断・検査の結果、入院・手術を進められたことはありますか？</template>
+      <template #answer02 v-if="lifeAssurance">
           <label for="answer01">はい<input v-model="hospitalization" id="answer01" type="radio" name="hospitalization" value="true"></label>
           <label for="answer02">いいえ<input v-model="hospitalization" id="answer02" type="radio" name="hospitalization" value="false"></label>
       </template>
-      <template #question03>過去5年以内に、病気や怪我で、手術をうけたことまたは継続して7日以上の入院をしたことがありますか？</template>
-      <template #answer03>
-          <label for="answer01">はい<input v-model="hospitalizationex" id="answer01" type="radio" name="hospitalization-ex" value="true"></label>
-          <label for="answer02">いいえ<input v-model="hospitalizationex" id="answer02" type="radio" name="hospitalization-ex" value="false"></label>
+      <template #question03 v-if="lifeAssurance && hospitalization">過去5年以内に、病気や怪我で、手術をうけたことまたは継続して7日以上の入院をしたことがありますか？</template>
+      <template #answer03 v-if="lifeAssurance && hospitalization">
+          <label for="answer01">はい<input v-model="hospitalization" id="answer01" type="radio" name="hospitalization-ex" value="true"></label>
+          <label for="answer02">いいえ<input v-model="hospitalization" id="answer02" type="radio" name="hospitalization-ex" value="false"></label>
       </template> 
 </StepCompornent>
   <div class="button-area">

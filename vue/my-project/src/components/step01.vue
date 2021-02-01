@@ -14,6 +14,45 @@
           <div class="answer02">
         <select class="answer02__year" v-model="birth" name="year" id="year">
                             <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
+                            <option value="1970">1970/昭和45</option>
                             <option value="1971">1971/昭和46</option>
                             <option value="1972">1972/昭和47</option>
                             <option value="1973">1973/昭和48</option>
@@ -113,7 +152,6 @@
 
 <script>
 import StepCompornent from './step-compornent'
-
 export default {
     props:{
         startnum:Number
@@ -126,6 +164,7 @@ export default {
     },
     data:function(){
         return{
+            date:'',
             Gender:'',
             birth:'',
             mounth:'',
