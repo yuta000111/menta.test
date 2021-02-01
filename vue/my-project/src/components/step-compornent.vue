@@ -1,4 +1,3 @@
-/* eslint-disable vue/no-unused-components */
 <template>
     <div class="container">
       <div class="stepbox">
@@ -14,7 +13,7 @@
                   <div class="stepbox__textarea--inner">
                     <p class="question"><slot name="question01"></slot></p>
                     <div class="answer">
-                        <slot name="answer1"></slot>
+                        <slot name="answer01"></slot>
                     </div>
                 </div>
               </div>
@@ -22,16 +21,21 @@
                   <div class="stepbox__textarea--inner">
                     <p class="question"><slot name="question02"></slot></p>
                     <div class="answer">
-                        <slot name="answer2"></slot>
+                        <slot name="answer02"></slot>
+                    </div>
+                </div>
+              </div>
+              <div class="stepbox__textarea--question">
+                  <div class="stepbox__textarea--inner">
+                    <p class="question"><slot name="question03"></slot></p>
+                    <div class="answer">
+                        <slot name="answer03"></slot>
                     </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-          <div class="button" :stepNum="stepNum">
-              <slot name="button"></slot>
-          </div>
       </div>
 </template>
 
@@ -49,12 +53,6 @@ export default {
 .container{
     max-width: 960px;
     margin:0 auto;
-}
-.button{
-    width:200px;    
-    margin:20px auto;
-
-
 }
 
 .stepbox{

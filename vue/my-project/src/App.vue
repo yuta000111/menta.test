@@ -1,23 +1,22 @@
 <template>
-  <Header></Header>
-  <step01 :startnumber="currentnum"></step01>
+    <Header></Header>
+    <router-view></router-view>
 </template>
 
 <script>
 import Header from './components/sample'
-import step01 from './components/step01'
 import 'normalize.css'
 export default {
   components:{
-    Header,
-    step01
+    Header
   },
   data:function(){
     return{
-      currentnum:1
+      currentnum:1,
+      answers:[]
     }
   }
-}
+  }
 </script>
 
 <style lang="scss">
@@ -29,5 +28,4 @@ export default {
   color: #2c3e50;
 
 }
-
 </style>
