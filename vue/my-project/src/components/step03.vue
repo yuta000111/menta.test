@@ -1,14 +1,15 @@
 <template>
   <StepCompornent>
       <template #stepnumber>STEP03</template>
-      <template #title>ごお相談内容をご記入ください</template>
-      <template #question01>--ご相談内容--</template>
+      <template #title>お相談内容をご記入ください</template>
+      <template #question01>{{question06}}</template>
       <template #answer01>
           <textarea class="consultation" v-model="consultation" name="consultation" cols="90" rows="20"></textarea>
       </template>         
   </StepCompornent>
   <div class="button-area">
-    <button class="button" type="button" @click="this.$router.push({path:'/step02'})">前に戻る</button>
+    <button class="button" type="button" @click="this.$router.push({path:'/step03'})">前に戻る</button>
+    <button class="button" type="button" @click="this.$router.push({path:'/step04'}); answerPush()">次に進む</button>
   </div>
 </template>
 
@@ -24,7 +25,18 @@ export default {
     },
     data:function(){
         return{
-            consultation:''
+            question06:'-ご相談内容-',
+            consultation:'',
+            answer03:[]
+        }
+    },
+    methods:{
+        answerPush:function(){
+        const answer06 = {
+            question:this.question06,
+            answer:this.consultation
+        }
+        this.$emit('answer',answer06)
         }
     }
 }
