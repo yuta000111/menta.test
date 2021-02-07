@@ -1,6 +1,6 @@
 <template>
     <Header></Header>
-    <router-view></router-view>
+    <router-view @answer="pushAnswer" :answers="answers"></router-view>
 </template>
 
 <script>
@@ -12,11 +12,15 @@ export default {
   },
   data:function(){
     return{
-      currentnum:1,
       answers:[]
     }
+  },
+  methods:{
+    pushAnswer:function(answer,...args){
+      this.answers.push(answer,...args)   
   }
-  }
+}
+}
 </script>
 
 <style lang="scss">
@@ -26,6 +30,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-
+}
+.button-area{
+    .button{
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    border: none;
+    background-color: #00947e;
+    padding: 0.6em 1em;
+    &:last-child{
+        margin-left: 10px;
+    }
+    }
 }
 </style>
