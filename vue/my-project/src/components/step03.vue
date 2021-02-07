@@ -2,7 +2,7 @@
   <StepCompornent>
       <template #stepnumber>STEP03</template>
       <template #title>お相談内容をご記入ください</template>
-      <template #question01>{{question06}}</template>
+      <template #question01>-ご相談内容-</template>
       <template #answer01>
           <textarea class="consultation" v-model="consultation" name="consultation" cols="90" rows="20"></textarea>
       </template>         

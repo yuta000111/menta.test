@@ -2,13 +2,13 @@
   <StepCompornent>
       <template #title>お客様の情報をご入力してください。</template>
       <template #stepnumber>STEP1</template>
-      <template #question01>{{question01}}</template>
+      <template #question01>-性別-</template>
       <template #answer01>
         <input v-model="Gender" value="男性" type="radio" name="gender" id="gender01"><label for="gender01">男性</label>
         <input v-model="Gender" value="女性" type="radio" name="gender" id="gender02"><label for="gender02">女性</label>  
       </template>
       <template #question02>
-          {{question02}}
+          -生年月日-
       </template> 
       <template #answer02>
           <div class="answer02">
@@ -57,7 +57,7 @@ export default {
             const answer01 = {
                 question:this.question01,
                 answer:this.Gender
-                            }
+                }
             const answer02 = { 
                 question:this.question02,
                 answer:this.birth + '年' + this.mounth + '月' + this.day + '日'
