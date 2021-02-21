@@ -7,6 +7,11 @@ import index from "@/components/index.vue";
 export default {
   components: {
     index
+  },
+  data: function() {
+    return {
+      id: ""
+    };
   }
 };
 </script>
