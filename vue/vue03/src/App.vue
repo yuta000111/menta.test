@@ -10,7 +10,8 @@ export default {
   },
   data: function() {
     return {
-      id: ""
+      id: "",
+      task: {}
     };
   }
 };
