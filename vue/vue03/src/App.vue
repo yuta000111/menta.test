@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>ToDOリスト</h1>
     <label for="radio01"
       >すべて<input id="radio01" type="radio" name="radio"
@@ -17,23 +17,42 @@
           <th>コメント</th>
           <th>完了</th>
         </tr>
+        <task v-for="tasks in taskList" :key="tasks[id]" :task-list="tasks" />
       </tbdoy>
     </table>
     <h3>新規タスクの追加</h3>
-    <input id="newtask" type="text" /><button>追加</button>
+    <input id="newtask" v-model="task.comment" type="text" /><button
+      @click="addTask"
+    >
+      追加
+    </button>
   </div>
 </template>
 
 <script>
+import task from "@/components/task";
 export default {
+  components: {
+    task
+  },
   data: function() {
     return {
-      id: "",
-      task: {},
-      comment: ""
+      taskList: [],
+      task: { id: "", comment: "", workStats: { work: true, done: false } }
     };
+  },
+  methods: {
+    addTask: function() {
+      task.id = this.taskList.length + 1;
+      this.taskList.push(task);
+    }
   }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+</style>
