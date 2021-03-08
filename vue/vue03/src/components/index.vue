@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>ToDOリスト</h1>
     <label for="radio01"
       >すべて<input id="radio01" type="radio" name="radio"
@@ -17,16 +17,69 @@
           <th>コメント</th>
           <th>完了</th>
         </tr>
+        <Task :tasklist="taskList" @remove="removeTasklist"></Task>
       </tbdoy>
     </table>
     <h3>新規タスクの追加</h3>
-    <input id="newtask" type="text" /><button>追加</button>
+    <input id="newTask" v-model="comment" type="text" /><button
+      @click="addTaskList"
+    >
+      追加
+    </button>
   </div>
 </template>
 
 <script>
-export default {};
+import Task from "@/components/task.vue";
+export default {
+  components: {
+    Task
+  },
+  data: function() {
+    return {
+      id: "",
+      comment: "",
+      stuts: { work: true, done: false },
+      task: {},
+      taskList: []
+    };
+  },
+  computed: {
+    allTasks: function() {
+      return this.taskList.filter(function(element) {
+        return element.stuts.work && element.stuts.done;
+      });
+    },
+    workTasks: function() {
+      return this.taskList.filter(function(element) {
+        return element.stuts.work && element.stuts.done;
+      });
+    },
+    doneTasks: function() {
+      return this.taskList.filter(function(element) {
+        return element.stuts.work && element.stuts.done;
+      });
+    }
+  },
+  methods: {
+    addTaskList: function() {
+      this.id = this.taskList.length + 1;
+      this.task.id = this.id;
+      this.task.comment = this.comment;
+      this.task.stuts = this.stuts;
+      this.taskList.push(this.task);
+      this.task = {};
+    },
+    removeTasklist: function(taskid) {
+      this.taskList.solice(taskid, taskid);
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.container {
+  margin: 0 auto;
+}
+</style>
