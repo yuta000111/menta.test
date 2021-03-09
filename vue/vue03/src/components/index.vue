@@ -2,13 +2,28 @@
   <div class="container">
     <h1>ToDOリスト</h1>
     <label for="radio01"
-      >すべて<input id="radio01" type="radio" name="radio"
+      >すべて<input
+        id="radio01"
+        v-model="activeTask"
+        value="all"
+        type="radio"
+        name="radio"
     /></label>
     <label for="radio02"
-      >作業中<input id="radio02" type="radio" name="radio"
+      >作業中<input
+        id="radio02"
+        v-model="activeTask"
+        value="work"
+        type="radio"
+        name="radio"
     /></label>
     <label for="radio03"
-      >完了<input id="radio03" type="radio" name="radio"
+      >完了<input
+        id="radio03"
+        v-model="activeTask"
+        value="done"
+        type="radio"
+        name="radio"
     /></label>
     <table>
       <tbdoy>
@@ -17,7 +32,7 @@
           <th>コメント</th>
           <th>完了</th>
         </tr>
-        <Task :tasklist="taskList" @remove="removeTasklist"></Task>
+        <Task :tasklist="activeTaskList" @remove="removeTasklist"></Task>
       </tbdoy>
     </table>
     <h3>新規タスクの追加</h3>
@@ -41,24 +56,15 @@ export default {
       comment: "",
       stuts: { work: true, done: false },
       task: {},
-      taskList: []
+      taskList: [],
+      activeTask: ""
     };
   },
   computed: {
-    allTasks: function() {
-      return this.taskList.filter(function(element) {
-        return element.stuts.work && element.stuts.done;
-      });
-    },
-    workTasks: function() {
-      return this.taskList.filter(function(element) {
-        return element.stuts.work && element.stuts.done;
-      });
-    },
-    doneTasks: function() {
-      return this.taskList.filter(function(element) {
-        return element.stuts.work && element.stuts.done;
-      });
+    activeTaskList: function() {
+      if (this.activeTask === "" || "all") {
+        return this.taskList;
+      }
     }
   },
   methods: {
