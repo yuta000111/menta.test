@@ -30,14 +30,18 @@
         <tr>
           <th>ID</th>
           <th>コメント</th>
-          <th>完了</th>
+          <th>状態</th>
         </tr>
-        <Task :tasklist="activeTaskList" @remove="removeTasklist"></Task>
+        <Task
+          :tasklist="sortingTaskList"
+          @remove="removeTasklist"
+          @changestuts="changeStutsList"
+        ></Task>
       </tbdoy>
     </table>
     <h3>新規タスクの追加</h3>
     <input id="newTask" v-model="comment" type="text" /><button
-      @click="addTaskList"
+      @click="makeTask"
     >
       追加
     </button>
@@ -54,30 +58,57 @@ export default {
     return {
       id: "",
       comment: "",
-      stuts: { work: true, done: false },
+      workStuts: true,
       task: {},
       taskList: [],
       activeTask: ""
     };
   },
   computed: {
-    activeTaskList: function() {
-      if (this.activeTask === "" || "all") {
+    sortingTaskList: function() {
+      if (this.activeTask == "") {
+        return this.taskList;
+      } else if (this.activeTask == "all") {
+        return this.taskList;
+      } else if (this.activeTask == "work") {
+        return this.taskList.filter(function(value) {
+          return value.stuts == true;
+        });
+      } else if (this.activeTask == "done") {
+        return this.taskList.filter(function(value) {
+          return value.stuts == false;
+        });
+      } else {
         return this.taskList;
       }
     }
   },
   methods: {
-    addTaskList: function() {
+    makeTask: function() {
       this.id = this.taskList.length + 1;
       this.task.id = this.id;
       this.task.comment = this.comment;
-      this.task.stuts = this.stuts;
+      this.task.stuts = this.workStuts;
       this.taskList.push(this.task);
+      this.comment = "";
       this.task = {};
     },
+    remakeTask: function() {
+      this.taskList.map(function(value, index) {
+        value.id = index + 1;
+      });
+    },
     removeTasklist: function(taskid) {
-      this.taskList.solice(taskid, taskid);
+      this.taskList.splice(taskid - 1, 1);
+      this.remakeTask();
+    },
+    changeStutsList: function(stutsId) {
+      console.log(stutsId);
+      this.taskList.filter(function(value) {
+        if (stutsId.id == value.id) {
+          value.stuts = !stutsId.stuts;
+        }
+      });
     }
   }
 };
