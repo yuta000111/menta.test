@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import task from "@/components/task";
+import task from '@/components/task'
 export default {
   components: {
     task
@@ -38,21 +38,21 @@ export default {
   data: function() {
     return {
       taskList: [],
-      task: { id: "", comment: "", workStats: { work: true, done: false } }
-    };
+      task: { id: '', comment: '', workStats: { work: true, done: false } }
+    }
   },
   methods: {
     addTask: function() {
-      task.id = this.taskList.length + 1;
-      this.taskList.push(task);
+      task.id = this.taskList.length + 1
+      this.taskList.push(task)
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
-.container {
-  width: 960px;
+#app {
+  width: 50%;
   margin: 0 auto;
 }
 </style>
