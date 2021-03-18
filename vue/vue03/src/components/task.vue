@@ -5,13 +5,13 @@
       <td>{{ task.comment }}</td>
       <td>
         <button
-          v-show="task.stuts == true"
+          v-show="task.stuts === true"
           @click="toggleStuts({ id: task.id, stuts: task.stuts })"
         >
           作業中
         </button>
         <button
-          v-show="task.stuts == false"
+          v-show="task.stuts === false"
           @click="toggleStuts({ id: task.id, stuts: task.stuts })"
         >
           完了
@@ -32,20 +32,19 @@ export default {
   },
   data: function() {
     return {
-      taskStatus: "",
+      taskStatus: '',
       isWorking: true
-    };
+    }
   },
   methods: {
     removeTask: function(taskid) {
-      this.$emit("remove", taskid);
+      this.$emit('remove', taskid)
     },
     toggleStuts: function(stutsId) {
-      console.log(stutsId);
-      this.$emit("changestuts", stutsId);
+      this.$emit('changestuts', stutsId)
     }
   }
-};
+}
 </script>
 
 <style></style>

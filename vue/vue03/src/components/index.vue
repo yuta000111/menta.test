@@ -33,9 +33,9 @@
           <th>状態</th>
         </tr>
         <Task
-          :tasklist="sortingTaskList"
-          @remove="removeTasklist"
-          @changestuts="changeStutsList"
+          :tasklist="sortingTask"
+          @remove="removeTask"
+          @changestuts="changeStuts"
         ></Task>
       </tbdoy>
     </table>
@@ -49,69 +49,68 @@
 </template>
 
 <script>
-import Task from "@/components/task.vue";
+import Task from '@/components/task.vue'
 export default {
   components: {
     Task
   },
   data: function() {
     return {
-      id: "",
-      comment: "",
+      id: '',
+      comment: '',
       workStuts: true,
       task: {},
       taskList: [],
-      activeTask: ""
-    };
+      activeTask: ''
+    }
   },
   computed: {
-    sortingTaskList: function() {
-      if (this.activeTask == "") {
-        return this.taskList;
-      } else if (this.activeTask == "all") {
-        return this.taskList;
-      } else if (this.activeTask == "work") {
+    sortingTask: function() {
+      if (this.activeTask === '') {
+        return this.taskList
+      } else if (this.activeTask === 'all') {
+        return this.taskList
+      } else if (this.activeTask === 'work') {
         return this.taskList.filter(function(value) {
-          return value.stuts == true;
-        });
-      } else if (this.activeTask == "done") {
+          return value.stuts === true
+        })
+      } else if (this.activeTask === 'done') {
         return this.taskList.filter(function(value) {
-          return value.stuts == false;
-        });
+          return value.stuts === false
+        })
       } else {
-        return this.taskList;
+        return this.taskList
       }
     }
   },
   methods: {
     makeTask: function() {
-      this.id = this.taskList.length + 1;
-      this.task.id = this.id;
-      this.task.comment = this.comment;
-      this.task.stuts = this.workStuts;
-      this.taskList.push(this.task);
-      this.comment = "";
-      this.task = {};
+      this.id = this.taskList.length + 1
+      this.task.id = this.id
+      this.task.comment = this.comment
+      this.task.stuts = this.workStuts
+      this.taskList.push(this.task)
+      this.comment = ''
+      this.task = {}
     },
     remakeTask: function() {
       this.taskList.map(function(value, index) {
-        value.id = index + 1;
-      });
+        value.id = index + 1
+      })
     },
-    removeTasklist: function(taskid) {
-      this.taskList.splice(taskid - 1, 1);
-      this.remakeTask();
+    removeTask: function(taskid) {
+      this.taskList.splice(taskid - 1, 1)
+      this.remakeTask()
     },
-    changeStutsList: function(stutsId) {
-      console.log(stutsId);
+    changeStuts: function(stutsId) {
       this.taskList.filter(function(value) {
-        if (stutsId.id == value.id) {
-          value.stuts = !stutsId.stuts;
+        if (stutsId.id === value.id) {
+          value.stuts = !stutsId.stuts
         }
-      });
+      })
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
