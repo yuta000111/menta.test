@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import firebase from 'firebase'
 export default {
   name: 'HelloWorld',
   data: function () {
@@ -45,16 +44,13 @@ export default {
     }
   },
   methods: {
-    signUp: function () {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.email, this.password)
-        .then((user) => {
-          alert('Create account: ', user.email)
-        })
-        .catch((error) => {
-          alert(error.message)
-        })
+    addInfomation: function () {
+      const userInfomation = {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+      this.$store.commit('addAccount', userInfomation)
     }
   }
 }
