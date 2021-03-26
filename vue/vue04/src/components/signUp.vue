@@ -35,7 +35,6 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
   data: function () {
     return {
       username: '',
