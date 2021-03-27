@@ -49,7 +49,7 @@ export default {
         email: this.email,
         password: this.password
       }
-      this.$store.commit('addAccount', userInfomation)
+      this.$store.dispatch('signUp', userInfomation)
     }
   }
 }

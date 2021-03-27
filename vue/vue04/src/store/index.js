@@ -12,19 +12,23 @@ export default createStore({
             state.username = userInfomation.username
             state.email = userInfomation.email
             state.password = userInfomation.password
-        },
-        signUp: function(state) {
+        }
+    },
+    actions: {
+        signUp: function({ commit }, userInfomation) {
             firebase
                 .auth()
-                .createUserWithEmailAndPassword(state.email, state.password)
+                .createUserWithEmailAndPassword(
+                    userInfomation.email,
+                    userInfomation.password
+                )
                 .then((user) => {
-                    alert('Create account: ', user.email)
+                    commit('addAccount', user)
                 })
                 .catch((error) => {
                     alert(error.message)
                 })
         }
     },
-    actions: {},
     modules: {}
 })
