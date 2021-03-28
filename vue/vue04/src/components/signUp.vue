@@ -30,26 +30,51 @@
       type="text"
     />
   </div>
-  <button class="signup__btn" @click="signUp">新規登録</button>
+  <button v-show="userState" class="signup__btn" @click="signUp">
+    新規登録
+  </button>
+  <button v-show="userState" class="btn-change" @click="toggleSignup">
+    {{ loginText }}
+  </button>
+  <button v-show="!userState" class="signup__btn" @click="logIn">
+    ログイン
+  </button>
+  <button v-show="!userState" class="btn-change" @click="toggleSignup">
+    {{ signupText }}
+  </button>
 </template>
 
 <script>
 export default {
   data: function () {
     return {
+      userState: true,
+      signupText: '新規登録はこちらから',
+      loginText: 'ログインはこちらから',
       username: '',
       email: '',
       password: ''
     }
   },
   methods: {
-    addInfomation: function () {
-      const userInfomation = {
+    toggleSignup: function () {
+      this.userState = !this.userState
+    },
+    signUp: function () {
+      const signupInfomation = {
         username: this.username,
         email: this.email,
         password: this.password
       }
-      this.$store.dispatch('signUp', userInfomation)
+      this.$store.dispatch('signUp', signupInfomation)
+    },
+    logIn: function () {
+      const loginInfomation = {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('logIn', loginInfomation)
     }
   }
 }
@@ -71,6 +96,17 @@ li {
 a {
   color: #42b983;
 }
+.login {
+  &__btn {
+    font-size: 20px;
+  }
+}
+.btn-change {
+  border: none;
+  background-color: none;
+  font-size: 16px;
+  cursor: pointer;
+}
 .signup {
   width: 300px;
   display: flex;
@@ -79,8 +115,10 @@ a {
   justify-content: space-between;
   margin: 0 auto;
   padding-top: 5px;
+  flex-wrap: wrap;
   &__btn {
-    margin-top: 20px;
+    display: block;
+    margin: 20px auto;
     font-size: 20px;
     background-color: none;
   }
