@@ -1,5 +1,6 @@
 <template>
-  <h2>新規登録画面</h2>
+  <h2 v-show="userState">{{ signupText }}</h2>
+  <h2 v-show="!userState">{{ loginText }}</h2>
   <div class="signup">
     <label for="username" class="signup__label">ユーザー名</label>
     <input
@@ -49,18 +50,18 @@ export default {
   data: function () {
     return {
       userState: true,
-      signupText: '新規登録はこちらから',
-      loginText: 'ログインはこちらから',
+      signupText: '新規登録',
+      loginText: 'ログイン',
       username: '',
       email: '',
       password: ''
     }
   },
   methods: {
-    toggleSignup: function () {
+    toggleSignup() {
       this.userState = !this.userState
     },
-    signUp: function () {
+    signUp() {
       const signupInfomation = {
         username: this.username,
         email: this.email,
@@ -68,7 +69,7 @@ export default {
       }
       this.$store.dispatch('signUp', signupInfomation)
     },
-    logIn: function () {
+    logIn() {
       const loginInfomation = {
         username: this.username,
         email: this.email,
