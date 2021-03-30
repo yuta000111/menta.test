@@ -9,14 +9,15 @@ export default createStore({
         password: ''
     },
     mutations: {
-        addAccount(state, userInfomation) {
-            state.username = userInfomation.username
-            state.email = userInfomation.email
-            state.password = userInfomation.password
+        currentAccount(state, user) {
+            state.email = user.email
+            state.password = user.password
+            state.username = user.displayName
         }
     },
     actions: {
         signUp: function({ commit }, userInfomation) {
+            const userName = userInfomation.username
             firebase
                 .auth()
                 .createUserWithEmailAndPassword(
@@ -24,9 +25,23 @@ export default createStore({
                     userInfomation.password
                 )
                 .then((user) => {
-                    commit('addAccount', user)
+                    firebase.auth().currentUser.updateProfile({
+                        displayName: userName
+                    })
+                    commit('currentAccount', user)
                     router.push('/state')
-                    alert('signup succcess' + user)
+                })
+                .then((user) => {
+                    firebase
+                        .database()
+                        .ref('users')
+                        .set({
+                            user: {
+                                name: user.user.displayName,
+                                email: user.user.email,
+                                wallet: 1000
+                            }
+                        })
                 })
                 .catch((error) => {
                     alert(error.message)
@@ -40,9 +55,8 @@ export default createStore({
                     userInfomation.password
                 )
                 .then((user) => {
-                    commit('addAccount', user)
+                    commit('currentAccount', user)
                     router.push('/state')
-                    alert('login succcess' + user)
                 })
                 .catch((error) => {
                     alert(error.message)

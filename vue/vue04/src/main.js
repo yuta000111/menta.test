@@ -7,6 +7,7 @@ import store from './store'
 const firebaseConfig = {
     apiKey: 'AIzaSyA4ossIxWST9hKEo9-KjfFCGyNvI3P_N_c',
     authDomain: 'vue-task004.firebaseapp.com',
+    databaseURL: 'https://vue-task004-default-rtdb.firebaseio.com',
     projectId: 'vue-task004',
     storageBucket: 'vue-task004.appspot.com',
     messagingSenderId: '135144096571',
