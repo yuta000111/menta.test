@@ -24,24 +24,33 @@ export default createStore({
                     userInfomation.email,
                     userInfomation.password
                 )
-                .then((user) => {
-                    firebase.auth().currentUser.updateProfile({
+                .then((result) => {
+                    result.user.updateProfile({
                         displayName: userName
                     })
-                    commit('currentAccount', user)
-                    router.push('/state')
+                    return result
                 })
-                .then((user) => {
+                .then((result) => {
+                    console.log(result)
+                    console.log(result.user)
+                    console.log(result.user.displayName)
+                    console.log(result.user.email)
                     firebase
                         .database()
-                        .ref('users')
+                        .ref('usersList')
                         .set({
-                            user: {
-                                name: user.user.displayName,
-                                email: user.user.email,
+                            users: {
+                                name: result.user.displayName,
+                                email: result.user.email,
                                 wallet: 1000
                             }
                         })
+                    return result
+                })
+                .then((result) => {
+                    commit('currentAccount', result)
+                    router.push('/state')
+                    return result
                 })
                 .catch((error) => {
                     alert(error.message)
