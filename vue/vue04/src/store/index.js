@@ -31,10 +31,9 @@ export default createStore({
                     return result
                 })
                 .then((result) => {
-                    console.log(result)
-                    console.log(result.user)
-                    console.log(result.user.displayName)
-                    console.log(result.user.email)
+                    const user = firebase.auth().currentUser
+                    console.log(user)
+                    console.log(user.displayName)
                     firebase
                         .database()
                         .ref('usersList')
