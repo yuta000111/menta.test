@@ -2,8 +2,11 @@
   <h2 v-show="userState">{{ signupText }}</h2>
   <h2 v-show="!userState">{{ loginText }}</h2>
   <div class="signup">
-    <label for="username" class="signup__label">ユーザー名</label>
+    <label v-show="userState" for="username" class="signup__label"
+      >ユーザー名</label
+    >
     <input
+      v-show="userState"
       id="username"
       v-model="username"
       placeholder="username"
